@@ -26,4 +26,18 @@ async function getPost(req, res, id) {
   }
 }
 
-module.exports = { getPosts, getPost };
+async function createPost(req, res) {
+  let body = "";
+  req.on("data", (chunk) => {
+    body += chunk.toString();
+  });
+
+  req.on("end", async () => {
+    const { author, content, likes } = JSON.parse(body);
+    const newPost = await Posts.create({ author, content, likes });
+    res.writeHead(201, { "Content-Type": "application/json" });
+    res.end(JSON.stringify(newPost));
+  });
+}
+
+module.exports = { getPosts, getPost, createPost };

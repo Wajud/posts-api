@@ -1,4 +1,1 @@
-[
-  { "id": "1", "author": "Chuck", "content": "What's up", "likes": 4 },
-  { "id": "2", "author": "Morgan", "content": "Hey Morgan"," likes": 19 }
-]
+[{"id":"1","author":"Chuck","content":"What's up","likes":4},{"id":"2","author":"Morgan","content":"Hey Morgan"," likes":19},{"author":"Kareemstry","content":"A new post","likes":34,"id":"5b708569-fab2-4994-a523-3434d6cf4da3"},{"author":"Wole","content":"A quick brown fox","likes":12,"id":"a5d97437-a89b-4dd4-b824-665427c5e4c9"}]
