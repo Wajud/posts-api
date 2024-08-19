@@ -3,6 +3,8 @@ const {
   getPosts,
   getPost,
   createPost,
+  updatePost,
+  deletePost,
 } = require("./controllers/postControllers");
 
 const server = createServer((req, res) => {
@@ -13,6 +15,12 @@ const server = createServer((req, res) => {
     getPost(req, res, id);
   } else if (req.url === "/api/posts" && req.method === "POST") {
     createPost(req, res);
+  } else if (req.url.match(/\/api\/posts\/(.+)/) && req.method === "PUT") {
+    const id = req.url.split("/")[3];
+    updatePost(req, res, id);
+  } else if (req.url.match(/\/api\/posts\/(.+)/) && req.method === "DELETE") {
+    const id = req.url.split("/")[3];
+    deletePost(req, res, id);
   } else {
     res.writeHead(400, { "Content-Type": "application/json" });
     res.end(JSON.stringify({ message: "Route Not Found" }));

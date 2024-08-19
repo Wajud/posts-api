@@ -27,4 +27,23 @@ function create(post) {
     resolve(newPost);
   });
 }
-module.exports = { findAll, findById, create };
+
+function update(id, updPost) {
+  return new Promise((resolve, reject) => {
+    const index = posts.findIndex((post) => post.id === id);
+    posts[index] = { id, ...updPost };
+    writeDataToFile(JSON.stringify(posts));
+    resolve({ id, ...updPost });
+  });
+}
+
+function remove(id) {
+  return new Promise((resolve, reject) => {
+    const index = posts.findIndex((post) => post.id === id);
+    posts.splice(index, 1);
+    writeDataToFile(JSON.stringify(posts));
+    resolve();
+  });
+}
+
+module.exports = { findAll, findById, create, update, remove };
